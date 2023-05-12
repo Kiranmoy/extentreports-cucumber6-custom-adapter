@@ -3,11 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>tech.grasshopper</groupId>
+	<groupId>com.kirannmoy.paul</groupId>
 	<artifactId>extentreports-cucumber6-adapter</artifactId>
 	<version>2.16.0</version>
-	<name>extentreports-cucumber6-adapter</name>
-	<url>https://ghchirp.online/2098/</url>
+	<name>extentreports-cucumber6-custom-adapter</name>
 	<description>Cucumber-JVM 6 adapter for Extent Framework</description>
 
 	<licenses>
@@ -19,10 +18,7 @@
 
 	<developers>
 		<developer>
-			<name>Grass Hopper</name>
-			<email>grass.hopper.moc@gmail.com</email>
-			<organization>Grasshopper</organization>
-			<organizationUrl>http://ghchirp.online/</organizationUrl>
+			<name>Kiranmoy Paul</name>
 		</developer>
 	</developers>
 
