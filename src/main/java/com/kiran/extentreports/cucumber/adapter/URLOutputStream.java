@@ -19,7 +19,7 @@ import io.cucumber.messages.internal.com.google.gson.Gson;
 
 /**
  * A stream that can write to both file and http URLs. If it's a file URL,
- * writes with a {@link FileOutputStream}, if it's a http or https URL,
+ * writes with a {@link java.io.FileOutputStream}, if it's a http or https URL,
  * writes with a HTTP PUT (by default) or with the specified method.
  */
 class URLOutputStream extends OutputStream {

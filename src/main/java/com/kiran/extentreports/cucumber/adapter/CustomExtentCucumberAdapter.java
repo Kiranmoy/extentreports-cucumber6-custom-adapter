@@ -60,7 +60,7 @@ import io.cucumber.plugin.event.WriteEvent;
  * https://github.com/cucumber/cucumber-jvm/blob/master/core/src/main/java/cucumber/runtime/formatter/HTMLFormatter.java
  *
  */
-public class ExtentCucumberAdapter implements ConcurrentEventListener {
+public class CustomExtentCucumberAdapter implements ConcurrentEventListener {
 
 	private static Map<String, ExtentTest> featureMap = new ConcurrentHashMap<>();
 	private static ThreadLocal<ExtentTest> featureTestThreadLocal = new InheritableThreadLocal<>();
@@ -138,7 +138,7 @@ public class ExtentCucumberAdapter implements ConcurrentEventListener {
 		}
 	};
 
-	public ExtentCucumberAdapter(String arg) {
+	public CustomExtentCucumberAdapter(String arg) {
 		ExtentService.getInstance();
 	}
 
