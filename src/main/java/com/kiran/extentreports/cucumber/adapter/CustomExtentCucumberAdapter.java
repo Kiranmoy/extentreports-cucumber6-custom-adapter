@@ -27,8 +27,8 @@ import com.aventstack.extentreports.gherkin.model.Asterisk;
 import com.aventstack.extentreports.gherkin.model.ScenarioOutline;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.model.Test;
-import com.aventstack.extentreports.service.ExtentService;
 
+import com.kiran.extentreports.service.ExtentService;
 import com.kiran.extentreports.utils.ReportUtils;
 import io.cucumber.core.exception.CucumberException;
 import io.cucumber.messages.Messages.GherkinDocument.Feature;
@@ -40,7 +40,6 @@ import io.cucumber.messages.Messages.GherkinDocument.Feature.TableRow.TableCell;
 import io.cucumber.plugin.ConcurrentEventListener;
 import io.cucumber.plugin.event.*;
 
-import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -329,13 +328,21 @@ public class CustomExtentCucumberAdapter implements ConcurrentEventListener {
         stepTestThreadLocal.get().info("<b>SCENARIO EXECUTION LOG: </b>" + String.format(fileLink, logFileName, encodedLogs, "update-Log-file-name-here"));
 
         List<String> scenarioTags = event.getTestCase().getTags();
-        String testCaseExecutionStatus = "</b>TEST CASE EXECUTED IN RALLY: </b>";
+        String testCaseExecutionStatus = "<b>TEST CASE EXECUTED IN RALLY: <a target='_blank' href='%s'>%s</a> | Status - %s</b>";
         List<String> testCases = ReportUtils.filterTestCaseTags(scenarioTags);
         for(String testCaseId : testCases){
-            String testCaseLink = "<b><a target='_blank' href='%s'>%s</a></b>";
-            stepTestThreadLocal.get().info(testCaseExecutionStatus + String.format(testCaseLink, "add-testcase-link", testCaseId));
+            String testCaseLink = "";
+            String testCaseStatus = stepTestThreadLocal.get().getStatus().toString();
+            stepTestThreadLocal.get().info(
+                    String.format(
+                            testCaseExecutionStatus,
+                            testCaseLink,
+                            testCaseId,
+                            testCaseStatus
+                    )
+            );
             // Execute Test Case in Rally
-            ReportUtils.executeTestCaseInRally(testCaseId, String.valueOf(stepTestThreadLocal.get().getStatus()));
+            ReportUtils.executeTestCaseInRally(testCaseId, testCaseStatus);
         }
     }
 

@@ -1,4 +1,4 @@
-package com.aventstack.extentreports.service;
+package com.kiran.extentreports.service;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -85,11 +85,10 @@ public class ExtentService implements Serializable {
 	}
 
 	private static class ExtentReportsLoader {
-
+		private static final String extentPropertiesPath = System.getProperty("extent.properties.base.path") ;
 		private static final ExtentReports INSTANCE = new ExtentReports();
 		private static final String[] DEFAULT_SETUP_PATH = new String[] { "extent.properties",
-				"com/kiran/adapter/extent.properties" };
-
+				extentPropertiesPath!=null? extentPropertiesPath : "com/kiran/adapter/extent.properties" };
 		private static final String SYS_INFO_MARKER = "systeminfo.";
 		private static final String OUTPUT_PATH = "test-output/";
 		private static final String EXTENT_REPORTER = "extent.reporter";
